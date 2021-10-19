@@ -1,12 +1,29 @@
 #include <unistd.h>
 
-void	ft_putchar(char nb)
+void	ft_putchar(char c)
 {
-	write(1, &nb, 1);
+	write(1, &c, 1);
 	return ;
 }
 
 void	ft_putnbr(int nb)
 {
-	a demain bb, coucou roucoul Gm7, Ab13, Cm9
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar('0' + nb);
 }
+
